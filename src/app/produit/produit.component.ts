@@ -1,7 +1,7 @@
 import { ProduitMockService } from './produit.mock.service';
 
 import { Component, OnInit } from '@angular/core';
-import { ProduitModule } from '../shared/produit/produit.module';
+/* import { ProduitModule } from '../shared/produit/produit.module'; */
 
 
 @Component({
@@ -11,14 +11,14 @@ import { ProduitModule } from '../shared/produit/produit.module';
 })
 export class ProduitComponent implements OnInit {
 
-  produits : ProduitModule[];
+/*   produits : ProduitModule[]; */
 
   constructor(private  productService:ProduitMockService) { 
 
   }
 
   ngOnInit() {
-    this.produits = this.productService.getProduits();
+/*     this.produits = this.productService.getProduits(); */
   }
 
 }

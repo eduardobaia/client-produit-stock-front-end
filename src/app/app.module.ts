@@ -1,5 +1,5 @@
 import { ProduitMockService } from './produit/produit.mock.service';
-import { ProduitModule } from './shared/produit/produit.module';
+/* import { ProduitModule } from './shared/produit/produit.module'; */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -22,7 +22,7 @@ import { ContentComponent } from './content/content.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ProduitModule
+   /*  ProduitModule */
   ],
   providers: [],
   bootstrap: [AppComponent]
