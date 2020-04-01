@@ -1,6 +1,8 @@
-import { ProduitMockService } from './produit.mock.service';
+/*import { ProduitMockService } from './produit.mock.service';*/
 
+import  { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+/*import { ProduitModule } from '../shared/produit/produit.module';*/
 /* import { ProduitModule } from '../shared/produit/produit.module'; */
 
 
@@ -11,10 +13,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProduitComponent implements OnInit {
 
-/*   produits : ProduitModule[]; */
+  /*produits : ProduitModule[]; */
+  produitForm: FormGroup;
 
-  constructor(private  productService:ProduitMockService) { 
+  constructor(/*private  productService:ProduitMockService*/ private fb: FormBuilder) { 
 
+    this.produitForm= this.fb.group({
+      ref:['', Validators.required],
+      quantite:'',
+      prixUnitaire:''
+    });
   }
 
   ngOnInit() {

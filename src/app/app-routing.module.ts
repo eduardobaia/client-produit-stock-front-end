@@ -5,8 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {path: 'produit', component: ProduitComponent},
+
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'produit', component: ProduitComponent},
   {path:'', redirectTo: '/dashboard', pathMatch: 'full'}
 ];
 
