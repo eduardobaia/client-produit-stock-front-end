@@ -1,3 +1,5 @@
+
+import { ProduitService } from './produit.service';
 /*import { ProduitMockService } from './produit.mock.service';*/
 
 import  { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -5,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 /*import { ProduitModule } from '../shared/produit/produit.module';*/
 /* import { ProduitModule } from '../shared/produit/produit.module'; */
 
+import { ProduitModule } from "../shared/produit/produit/produit.module";
 
 @Component({
   selector: 'app-produit',
@@ -13,10 +16,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProduitComponent implements OnInit {
 
-  /*produits : ProduitModule[]; */
+  produits : ProduitModule[];
   produitForm: FormGroup;
 
-  constructor(/*private  productService:ProduitMockService*/ private fb: FormBuilder) { 
+  
+
+
+  constructor(private  produitService: ProduitService, private fb: FormBuilder) { 
 
     this.produitForm= this.fb.group({
       ref:['', Validators.required],
@@ -26,7 +32,18 @@ export class ProduitComponent implements OnInit {
   }
 
   ngOnInit() {
-/*     this.produits = this.productService.getProduits(); */
+   this.loadProduits();
+  }
+
+
+
+  loadProduits(){
+    this.produitService.getProduits().subscribe(
+data => {this.produits  = data},
+error => {console.log('An error has occured.')},
+() => {console.log('loading produits was done.')}
+
+    );
   }
 
 }
