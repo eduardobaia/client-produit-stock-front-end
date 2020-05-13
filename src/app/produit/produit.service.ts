@@ -26,7 +26,8 @@ export class ProduitService {
   }
 
   deleteProduit(ref: string) : Observable<any>{
-    return this.http.delete(API_URLS.PRODUIT_URL + '/${ref}');
+    console.log("pdotuo selecionado "+ ref);
+    return this.http.delete(API_URLS.PRODUIT_URL + '/'+ref);
   }
 }
  

@@ -5,6 +5,7 @@ import { ProduitService } from './produit.service';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 /*import { ProduitModule } from '../shared/produit/produit.module';*/
 /* import { ProduitModule } from '../shared/produit/produit.module'; */
 
@@ -23,7 +24,7 @@ export class ProduitComponent implements OnInit {
   selectedProduit: ProduitModule;
 
 
-  constructor(private produitService: ProduitService, private fb: FormBuilder) {
+  constructor(private produitService: ProduitService, private fb: FormBuilder, private router: ActivatedRoute) {
     this.createForm();
   }
 
@@ -39,6 +40,7 @@ export class ProduitComponent implements OnInit {
   ngOnInit() {
     this.initProduit();
     this.loadProduits();
+    this.produits = this.router.snapshot.data.produits;
   }
 
 
@@ -83,6 +85,20 @@ export class ProduitComponent implements OnInit {
   initProduit() {
     this.selectedProduit = new ProduitModule();
     this.createForm();
+  }
+
+
+  deleteProduit() {
+console.log("FOGO"+ this.selectedProduit.ref );
+
+    this.produitService.deleteProduit(this.selectedProduit.ref)
+      .subscribe(
+        res => {
+          this.selectedProduit = new ProduitModule();
+          this.loadProduits();
+        }
+
+      );
   }
 
 }
